@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>SmartCart V2</title>
+
+<style>
+#homeScreen{
+  position:fixed;
+  inset:0;
+  background: radial-gradient(
+    ellipse at 50% -10%,
+    #09295b,
+    #030b1d 45%,
+    #020715 80%
+  );
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.home-content{
+  text-align:center;
+}
+
+.start-btn{
+  padding:16px 45px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(135deg,#08d8ff,#087dff);
+  color:white;
+  cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div id="homeScreen">
+  <div class="home-content">
+    <h1>SmartCart</h1>
+    <p>Seu carrinho na palma da mão</p>
+
+    <button id="startBtn" class="start-btn">
+      COMEÇAR
+    </button>
+  </div>
+</div>
+
+<main id="controlScreen" style="display:none;">
+  <h2>Tela de Controle</h2>
+</main>
+
+<script>
+document.getElementById("startBtn")
+.addEventListener("click", () => {
+  document.getElementById("homeScreen").style.display = "none";
+  document.getElementById("controlScreen").style.display = "block";
+});
+</script>
+
+</body>
+</html>
