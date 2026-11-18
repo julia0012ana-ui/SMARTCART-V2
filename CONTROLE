@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conectar SmartCart</title>
+
+<style>
+body{
+    background:#020715;
+    color:white;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+    text-align:center;
+    background:#0d1224;
+    padding:30px;
+    border-radius:20px;
+    width:90%;
+    max-width:400px;
+    box-shadow:0 0 20px rgba(0,140,255,.3);
+}
+
+h1{
+    color:#08d7ff;
+}
+
+button{
+    background:#08d7ff;
+    color:white;
+    border:none;
+    padding:15px 25px;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+#status{
+    margin-top:20px;
+    color:#9bb3d4;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SmartCart</h1>
+    <p>Conecte seu carrinho inteligente</p>
+
+    <button onclick="connectBluetooth()">
+        Conectar Carrinho
+    </button>
+
+    <p id="status">Desconectado</p>
+</div>
+
+<script>
+async function connectBluetooth() {
+    try {
+        const device = await navigator.bluetooth.requestDevice({
+            acceptAllDevices: true
+        });
+
+        document.getElementById("status").innerHTML =
+        "✅ Conectado: " + device.name;
+
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 2000);
+
+    } catch(error) {
+        document.getElementById("status").innerHTML =
+        "❌ Conexão cancelada";
+    }
+}
+</script>
+
+</body>
+</html>
