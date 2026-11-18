@@ -1,0 +1,40 @@
+<button
+class="btn"
+style="width:220px;height:60px;font-size:20px;"
+onclick="connectESP32()">
+🔵 Conectar ESP32
+</button>
+
+<script>
+let device;
+let server;
+let service;
+let characteristic;
+
+async function connectESP32() {
+    try {
+
+        device = await navigator.bluetooth.requestDevice({
+            acceptAllDevices: true,
+            optionalServices: [
+                "0000ffe0-0000-1000-8000-00805f9b34fb"
+            ]
+        });
+
+        server = await device.gatt.connect();
+
+        document.getElementById("log").innerHTML =
+        "✅ ESP32 conectado";
+
+    } catch(err) {
+
+        document.getElementById("log").innerHTML =
+        "❌ Erro ao conectar";
+
+    }
+}
+
+function sendCommand(comando){
+    console.log("Comando enviado:", comando);
+}
+</script>
