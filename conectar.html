@@ -74,11 +74,10 @@ async function connectBluetooth() {
 
         document.getElementById("status").innerHTML =
         "✅ Conectado: " + device.name;
-
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 2000);
-
+setTimeout(() => {
+    window.location.href = "controle.html";
+}, 2000);
+       
     } catch(error) {
         document.getElementById("status").innerHTML =
         "❌ Conexão cancelada";
